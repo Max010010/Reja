@@ -1,28 +1,50 @@
+// B-TASK:
+//Shunday function tuzing, u 1ta string parametrga ega bolsin, hamda osha stringda qatnashgan raqamlarni sonini bizga return qilsin.
+// MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.
+// Masalani yechimi:
+
+
+
+
+const validator = require("validator");
+
+function countDigits(number) {
+    let count = 0;
+  for (let item of number) {
+    if (validator.isNumeric (item)){
+        count++;
+    }
+  }
+  return count;
+}
+
+console.log(countDigits("ffgf544"));
+
 // A-TASK: 
 // Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
 // MASALAN countLetter("e", "engineer") 3ni return qiladi.
 
 // Masalani yechimi:
-function countLetter(a, b) {
-    if (typeof a !== 'string' || a.length !== 1) {
-        return "1 parametrga faqat bitta belgi kiriting";
-    }
+// function countLetter(a, b) {
+//     if (typeof a !== 'string' || a.length !== 1) {
+//         return "1 parametrga faqat bitta belgi kiriting";
+//     }
 
-    if (typeof b !== 'string') {
-        return "2 parametrga so'z kiriting";
-    }
+//     if (typeof b !== 'string') {
+//         return "2 parametrga so'z kiriting";
+//     }
 
-    let count = 0;
+//     let count = 0;
 
-    for (let i = 0; i < b.length; i++) {
-        if (b[i] === a) {
-            count++;
-        }
-    }
+//     for (let i = 0; i < b.length; i++) {
+//         if (b[i] === a) {
+//             count++;
+//         }
+//     }
 
-    return count;
-}
-console.log(countLetter("e", "engineer"));
+//     return count;
+// }
+// console.log(countLetter("e", "engineer"));
 
 
 
@@ -111,9 +133,3 @@ console.log("passed here:", 2);
 // }
 
 // run();
-
-
-
-
-
-
