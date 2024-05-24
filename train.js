@@ -16,7 +16,7 @@ function countDigits(number) {
     }
   }
   return count;
-}
+} 
 
 console.log(countDigits("ffgf544"));
 
