@@ -6,19 +6,19 @@
 
 
 
-const validator = require("validator");
+// const validator = require("validator");
 
-function countDigits(number) {
-    let count = 0;
-  for (let item of number) {
-    if (validator.isNumeric (item)){
-        count++;
-    }
-  }
-  return count;
-} 
+// function countDigits(number) {
+//     let count = 0;
+//   for (let item of number) {
+//     if (validator.isNumeric (item)){
+//         count++;
+//     }
+//   }
+//   return count;
+// } 
 
-console.log(countDigits("ffgf544"));
+// console.log(countDigits("ffgf544"));
 
 // A-TASK: 
 // Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi sozdan qatnashga sonini return qilishi kerak boladi.
