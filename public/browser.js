@@ -12,35 +12,35 @@ function itemTemplate(item) {
   </li>`;
 }
 
-
-
 let createField = document.getElementById("create-field");
 
-document
-  .getElementById("create-form")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
+document.getElementById("create-form").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    axios.post("/create-item", {
-        reja: createField.value
-      })
-      .then((response) => {
-        document.getElementById("item-list").insertAdjacentHTML("beforeend", itemTemplate(response.data));
-        createField.value = "";
-        createField.focus();
-      })
-      .catch((data) => {
-        console.log("Iltimos qaytadan urinib ko'ring")
-      })
-  })
+  axios
+    .post("/create-item", {
+      reja: createField.value,
+    })
+    .then((response) => {
+      document
+        .getElementById("item-list")
+        .insertAdjacentHTML("beforeend", itemTemplate(response.data));
+      createField.value = "";
+      createField.focus();
+    })
+    .catch((data) => {
+      console.log("Iltimos qaytadan urinib ko'ring");
+    });
+});
 
 document.addEventListener("click", function (e) {
   // Delete operatsion
   console.log(e.target);
   if (e.target.classList.contains("delete-me")) {
     if (confirm("Aniq o'chirmoqchimisz")) {
-      axios.post("/delete-item", {
-          id: e.target.getAttribute("data-id")
+      axios
+        .post("/delete-item", {
+          id: e.target.getAttribute("data-id"),
         })
         .then((response) => {
           console.log(response.data);
@@ -48,13 +48,38 @@ document.addEventListener("click", function (e) {
         })
         .catch((err) => {
           console.log("Iltimos qaytadan urunib ko'ring");
-        })
+        });
     }
   }
 
+  // Edit operatsio
+  if (e.target.classList.contains("edit-me")) {
+    let userInput = prompt(
+      "O'zgartirish kiriting",
+      e.target.parentElement.parentElement.querySelector(".item-text").innerHTML
+    );
+    if (userInput) {
+      axios
+        .post("/edit-item", {
+          id: e.target.getAttribute("data-id"),
+          new_input: userInput,
+        })
+        .then((response) => {
+          console.log(response.data);
+          e.target.parentElement.parentElement.querySelector(
+            ".item-text"
+          ).innerHTML = userInput;
+        })
+        .catch((err) => {
+          console.log("Iltimos qaytadan urunib ko'ring");
+        });
+    }
+  }
+});
 
-
-  // Edit operatsio 
-  if (e.target.classList.contains("delete-me")) {}
-
-})
+document.getElementById("clean-all").addEventListener("click", function () {
+  axios.post("/delete-all", { delete_all: true }).then((response) => {
+    alert(response.data.state);
+    document.location.reload();
+  });
+});

@@ -1,31 +1,28 @@
-const moment = require("moment");
+// D-TASK: 
 
-class Shop {
-    non;
-    lagmon;
-    cola;
-    
-    constructor(non, lagmon, cola) {
-        this.non = non;
-        this.lagmon = lagmon;
-        this.cola = cola;
+// Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
+// MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
+
+// Masalani yechimi 
+
+let isAnagram = function (a, b) {
+  let freqMap = {};
+
+  for (let letter of a) {
+    freqMap[letter] = (freqMap[letter] || 0) + 1;
+  }
+
+  for (let bLetter of b) {
+    if (!freqMap[bLetter] || freqMap[bLetter] === 0) {
+      return false;
+    } else {
+      freqMap[bLetter]--;
     }
-    qoldiq() {
-        console.log(`${moment().format("hh:mm")} da ${this.non} ta non, ${this.lagmon} ta lagmon, ${this.cola} ta cola bor`)
-    };
-    sotish(non) {
-        this.non = this.non - non;
-    };
-    qabul(cola) {
-        this.cola = this.cola + cola;
-    };
-}
+  }
+  return true;
+};
 
-const newshop = new Shop(4, 5, 2)
-newshop.qoldiq();
-console.log("****************");
-newshop.sotish(3);
-newshop.qoldiq();
-console.log("****************");
-newshop.qabul(4);
-newshop.qoldiq();
+let a = "mitgroup";
+let b = "igmtprou";
+
+console.log(isAnagram(a, b));
