@@ -1,13 +1,17 @@
-// E-TASK:
+// F-TASK:
 
-// Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.
-// MASALAN: getReverse("hello") return qilsin "olleh"
+// Shunday findDoublers function tuzing, unga faqat bitta string argument pass bolib, agar stringda bir hil harf qatnashgan bolsa true, qatnashmasa false qaytarishi kerak.
+// MASALAN: getReverse("hello") return true return qiladi
 
-// Masalani yechimi
-
-function getReverse(inputString) {
-  return inputString.split("").reverse().join("");
+function findDoublers(str) {
+  let seen = new Set();
+  for (let char of str) {
+    if (seen.has(char)) {
+      return true;
+    }
+    seen.add(char);
+  }
+  return false;
 }
-let result = getReverse("hello");
 
-console.log(result);
+console.log(findDoublers("hello"));
